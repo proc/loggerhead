@@ -4,9 +4,11 @@ var EventEmitter = events.EventEmitter;
 
 function LoggerHead(name) {
   this.name = name;
+  this.log = new Log(this.name + "_log.txt");
+  
   this.write_to_log = function(str) {
     var write_str = this.name + " : " + str
-    Log.write(write_str);
+    this.log.write(write_str);
   }
 };
 
