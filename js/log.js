@@ -6,11 +6,12 @@ var Log = function(filename) {
     encoding : null,
     mode: 0666
   });
-  
-  this.write = function(str) {
-    ws.write(str + "\n");
-    console.log(str);
-  }
+  this.ws = ws;
+  return this; // just to be explicit
 }
 
+Log.prototype.write = function(str) {
+  this.ws.write(str + "\n");
+  console.log(str);
+}
 exports.Log = Log;
